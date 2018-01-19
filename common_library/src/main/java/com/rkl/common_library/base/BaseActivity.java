@@ -25,18 +25,22 @@ import com.rkl.common_library.util.LogUtils;
 import com.rkl.common_library.util.StatusBarUtil;
 import com.zhy.autolayout.AutoLayoutActivity;
 
+
 /**
  * 主要功能：activity基类
  * Created by rkl on 2018/1/11.
  * 修改历史：
  */
 
-public abstract class BaseActivity extends AutoLayoutActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends AutoLayoutActivity {
     //当前类名，通用TAG
     protected static String TAG;
 
     //当前的上下文对象
     protected Context context;
+
+    //当前activity的Presenter
+    protected P presenter;
 
 
 
@@ -64,19 +68,9 @@ public abstract class BaseActivity extends AutoLayoutActivity {
     //设置状态栏、全屏、旋转
     protected  void setStyleForStatusBarScreenRoate(){}
 
-    /**
-     * 如果要用到事件总线时，在这里注册
-     * RxBus.get().register(this);
-     * 注册了，那么必须取消
-     */
-    protected  void registerBus(){};
+    //初始化Presenter
+    protected abstract P createPresenter ();
 
-    /**
-     * 取消RxBus
-     * RxBus.get().unregister(this);
-     * Presenter解除绑定的view也可以在这里
-     */
-    protected  void unregisterBus(){};
 
 
 
@@ -85,6 +79,7 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         super.onCreate(savedInstanceState);
         context=this;
         TAG = this.getClass().getSimpleName();
+
         //设置无标题栏
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         //适配软键盘弹出
@@ -112,9 +107,33 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         setStyleForStatusBarScreenRoate();
         setAllowStatusBar();
         setAllowScreenRoate();
+        //获取Presenter
+        presenter =createPresenter();
         registerBus();
         //把当前activity加入activityManager方便管理
         ActivityManager.getInstance().addActivity(this);
+    }
+
+    /**
+     * 如果要用到事件总线时，在这里注册
+     * RxBus.get().register(this);
+     * 注册了，那么必须取消
+     */
+    protected  void registerBus(){
+        if (presenter!=null){
+            presenter.attachView(this);
+        }
+    }
+
+    /**
+     * 取消RxBus
+     * RxBus.get().unregister(this);
+     * Presenter解除绑定的view也可以在这里
+     */
+    protected  void unregisterBus(){
+        if (presenter!=null){
+            presenter.detachView();
+        }
     }
 
 

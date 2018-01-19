@@ -23,13 +23,15 @@ import java.util.Date;
  * 修改历史：
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     public static String TAG;
     protected BaseActivity mActivity;
     private View mViewContent;//缓存视图内容
     private ProgressDialog pDialog;
     private View rootView;
     private FrameLayout rootlayout;
+    //当前activity的Presenter
+    protected P presenter;
 
     /**
      * rootView是否初始化标志，防止回调函数在rootView为空的时候触发
@@ -44,6 +46,8 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initView(View view, Bundle savedInstanceState);
     //获取fragment布局文件ID
     protected abstract int getLayoutId();
+    //初始化Presenter
+    protected abstract P createPresenter ();
 
     //获取宿主Activity
     protected BaseActivity getHoldingActivity() {
@@ -62,21 +66,29 @@ public abstract class BaseFragment extends Fragment {
      * RxBus.get().register(this);
      * 注册了，那么必须取消
      */
-    protected  void registerBus(){};
+    protected  void registerBus(){
+        if (presenter!=null){
+            presenter.attachView(this);
+        }
+    }
 
     /**
      * 取消RxBus
      * RxBus.get().unregister(this);
      * Presenter解除绑定的view也可以在这里
      */
-    protected  void unregisterBus(){};
-
+    protected  void unregisterBus(){
+        if (presenter!=null){
+            presenter.detachView();
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVariable();
         TAG = this.getClass().getSimpleName();
+        presenter=createPresenter();
         registerBus();
     }
     @Override
