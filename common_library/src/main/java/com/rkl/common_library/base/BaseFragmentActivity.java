@@ -53,8 +53,8 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     private View buildIndicator(UnrefreshFragmentTabHost.Tab tab) {
         View view =inflater.inflate(R.layout.common_tabview,null);
-        ImageView img = (ImageView) view.findViewById(R.id.tab_icon);
-        TextView text = (TextView) view.findViewById(R.id.tab_text);
+        ImageView img =  view.findViewById(R.id.tab_icon);
+        TextView text = view.findViewById(R.id.tab_text);
         img.setBackgroundResource(tab.getIcon());
         text.setText(tab.getTitle());
 
@@ -64,7 +64,7 @@ public abstract class BaseFragmentActivity extends BaseActivity {
     }
 
     private void initWidgets() {
-        mTabhost = (UnrefreshFragmentTabHost) findViewById(android.R.id.tabhost);
+        mTabhost =  findViewById(android.R.id.tabhost);
     }
 
 }

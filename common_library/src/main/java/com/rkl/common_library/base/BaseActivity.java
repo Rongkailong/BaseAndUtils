@@ -86,12 +86,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AutoLayoutAc
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         //设置标题栏
         setContentView(R.layout.common_titlebar);
-        mTitleContent = findView(R.id.rl_title_content);
-        mTitleName = findView(R.id.tv_title_name);
-        mRightContentName = findView(R.id.tv_title_right);
-        mBackIcon = findView(R.id.iv_title_back);
-        mRightShareIcon = findView(R.id.iv_share);
-        mRootContent =  findView(R.id.content);
+        mTitleContent = findViewById(R.id.rl_title_content);
+        mTitleName = findViewById(R.id.tv_title_name);
+        mRightContentName = findViewById(R.id.tv_title_right);
+        mBackIcon = findViewById(R.id.iv_title_back);
+        mRightShareIcon = findViewById(R.id.iv_share);
+        mRootContent =  findViewById(R.id.content);
         //添加子布局
         if (getContentViewId() != 0) {
             mRootContent.removeAllViews();
@@ -260,16 +260,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AutoLayoutAc
         mRightContentName.setOnClickListener(onclick);
     }
 
-
-
-    /**findViewById的封装
-     * @param id 控件id
-     * @param <T>返回的类型
-     * @return
-     */
-    protected <T extends View> T findView(int id) {
-        return (T) findViewById(id);
-    }
 
     /**防止快速点击
      * @return
