@@ -28,30 +28,7 @@ public class AppUtils {
         throw new UnsupportedOperationException("u can't fuck me...");
     }
 
-    /**
-     * 安装App
-     * <p>根据路径安装App</p>
-     *
-     * @param context  上下文
-     * @param filePath 文件路径
-     */
-    public static void installApp(Context context, String filePath) {
-        installApp(context, new File(filePath));
-    }
 
-    /**
-     * 安装App
-     * <p>根据文件安装App</p>
-     *
-     * @param context 上下文
-     * @param file    文件
-     */
-    public static void installApp(Context context, File file) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-    }
 
     /**
      * 卸载指定包名的App

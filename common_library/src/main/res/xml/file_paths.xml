@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--物理路径相当于Context.getFilesDir() -->
+    <files-path name="files_path" path="."/>
+    <!--物理路径相当于Context.getCacheDir() -->
+    <cache-path name="cache_path" path="." />
+    <!--物理路径相当于Environment.getExternalStorageDirectory()-->
+    <external-path name="external_files" path="."/>
+    <!--物理路径相当于Context.getExternalFilesDir(String)-->
+    <external-files-path name="external_files_path" path="." />
+    <!--以上是官方提供的几种path类型，不过如果你想使用外置SD卡，可以用这个：-->
+    <root-path name="root_path" path="." />
+</paths>

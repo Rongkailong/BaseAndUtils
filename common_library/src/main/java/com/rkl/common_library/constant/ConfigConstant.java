@@ -1,6 +1,7 @@
 package com.rkl.common_library.constant;
 
 import android.content.Context;
+import android.os.Environment;
 
 import com.rkl.common_library.base.BaseApplication;
 
@@ -8,7 +9,7 @@ import java.util.logging.Logger;
 
 
 /**
- * Created by Maple on 2017/3/6.
+ * Created by rkl on 2017/3/6.
  */
 
 public class ConfigConstant {
@@ -16,6 +17,12 @@ public class ConfigConstant {
     /*运行环境配置*/
     public static final String TAG="";//logger的tag
     public static boolean isRelease=false;//是否是正式版
+
+    /*目录名配置*/
+    public static final String ROOT_PATH = "/root/";//根目录
+    public static final String IMAGE_PATH = ROOT_PATH + "image/";//图片目录
+    public static final String DOWNLOAD_PATH = ROOT_PATH + "download/";//下载目录
+    public static final String DOWNLOAD_VIDEO_PATH = ROOT_PATH + "video/";//视频下载目录
 
 
 

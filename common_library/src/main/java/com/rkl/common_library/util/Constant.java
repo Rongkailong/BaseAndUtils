@@ -9,57 +9,12 @@ import android.os.Environment;
  */
 public class Constant {
 
-
     public static final String EASE_EXTRA_BUNDLE = "ease_extra_bundle";
-    public static final String INTENT_CODE_JOB_SELECTED_ID = "job_select";//标记选贼的职位id
-    public static final long DEFAULT_CODE_JOB_SELECTED_ID = -1;//默认的工作ID
     public static final String ROOT_PATH = "/meike/";//根目录
     public static final String IMAGE_PATH = ROOT_PATH + "image/";//图片目录
     public static final String DOWNLOAD_PATH = ROOT_PATH + "download/";//下载目录
     public static final String DOWNLOAD_VIDEO_PATH = ROOT_PATH + "video/";//视频下载目录
-    public static final String ROOT_IMAGE_PATH= Environment.getExternalStorageDirectory()
-            + IMAGE_PATH;
-    /**
-     *查看职位审核状态码（type认证类型：0:待审核  1：正在招  2：已下架  3：已拒绝）
-     * */
-    public static final int JOB_WAIT_CHECK = 0;
-    public static final int JOB_INVITING = 1;
-    public static final int JOB_SOLD_OUT = 2;
-    public static final int JOB_REFUSE = 3;
-    /**
-     *查看职位报名状态码（type报名状态：0:待审核  1：正在招  2：已下架  3：已拒绝）
-     * */
-    public static final int DELIVERY_ALL = 0;
-    public static final int DELIVERY_APPLY = 1;
-    public static final int DELIVERY_HIRE = 2;
-    public static final int DELIVERY_CLOSE = 3;
-    /**
-     *查看工资结算状态码（type工资结算状态：0:所有  1：待发  2：已发）
-     * */
-    public static final int SALARY_ALL = 0;
-    public static final int SALARY_WAIT = 1;
-    public static final int SALARY_ARRIVAL = 2;
-
-    /**
-     *  0:评论列表  1：在招岗位  2：公司概况
-     */
-    public static final int COMPANY_COMMENT = 0;
-    public static final int COMPANY_JOB = 1;
-    public static final int COMPANY_INFO = 2;
-
-    /***
-     * 筛选条件
-     */
-
-    public static final int FILTER_ALL = -1;//全部
-    public static final int FILTER_NEAR = 0;//附近
-
-    /**
-     * 本地缓存策略标识model
-     */
-    public static final int DATA_SAVE=0;//无数据保存
-    public static final int DATA_REPLACE=1;//数据替换
-   public static final int DATA_REPLACE_FOR_OUTDATE=2;//过期数据替换
+    public static final String ROOT_IMAGE_PATH= Environment.getExternalStorageDirectory() + IMAGE_PATH;
 
 
 
@@ -161,8 +116,5 @@ public class Constant {
      * 正则：负浮点数
      */
     public static final String REGEX_NEGATIVE_FLOAT = "^-[1-9]\\d*\\.\\d*|-0\\.\\d*[1-9]\\d*$";
-    /**
-     * 正则：口令
-     */
-    public static final String REGEX_COMMED="^#[A-Za-z]{6}#$";
+
 }

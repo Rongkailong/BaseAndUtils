@@ -60,15 +60,6 @@ public class RegexUtils {
     }
 
     /**
-     * 验证是否是口令
-     * @param input
-     * @return
-     */
-    public static boolean isCommen(CharSequence input){
-        return isMatch(Constant.REGEX_COMMED,input);
-    }
-
-    /**
      * 验证身份证号码18位
      *
      * @param input 待验证文本
