@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Common_Library</string>
+    <string name="net_error">请检查网络是否可用</string>
+    <string name="data_parse_error">解析异常</string>
+    <string name="server_unknow_error">未找到服务器</string>
+    <string name="time_out_error">请求超时</string>
+    <string name="request_error">未知错误</string>
+</resources>
